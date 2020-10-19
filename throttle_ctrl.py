@@ -273,9 +273,9 @@ class Window:
                                   command = self.toggle_running)
         self.btn_run.grid(row = 0, column = 1)
 
-        self.btn_run = ttk.Button(frm_top_buttons, text = "Save settings", width = 20,
-                                  command = self.save_settings)
-        self.btn_run.grid(row = 0, column = 3)
+        self.btn_save = ttk.Button(frm_top_buttons, text = "Save settings", width = 20,
+                                   command = self.save_settings)
+        self.btn_save.grid(row = 0, column = 2, padx = 2)
 
         if(pygame.joystick.get_count() < 1):
             print("Please connect a joystick.")
