@@ -9,6 +9,9 @@ If someone knows a better and simpler way to get joystick data than using Pygame
 
 ## Note: Ingame throttle axis should be unbound to avoid conflict. I recommend making a new controls profile for this.
 
+# Known issues:
+- Reverser on same axis does not work.
+
 # To run:
 Right now you need Python 3, as well as the Python packages mentioned in `requirements.txt`.
 After installing Python 3, installing the packages should be as simple as opening a terminal/CMD window in the same folder as the project and running:  
