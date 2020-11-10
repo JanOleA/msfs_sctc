@@ -145,6 +145,7 @@ class AxisSlider(ttk.Frame):
         self._detents = {"max_reverse": -2, "idle": -1, "climb": 0.78, "flex": 0.9, "toga": 1}
         self._raw = 0
         self._output = 0
+        self._prev_throttle_set = None
 
     def set_idle(self):
         self._detents["idle"] = self._raw
@@ -204,7 +205,9 @@ class AxisSlider(ttk.Frame):
         if throttle is None:
             throttle = float(self._joy_axis_bar["value"])
 
-        aq.set(f"GENERAL_ENG_THROTTLE_LEVER_POSITION:{index}", throttle)
+        if throttle != self._prev_throttle_set:
+            aq.set(f"GENERAL_ENG_THROTTLE_LEVER_POSITION:{index}", throttle)
+            self._prev_throttle_set = throttle
 
     def get_out_throttle(self, val):
         mrev = self._detents["max_reverse"]
