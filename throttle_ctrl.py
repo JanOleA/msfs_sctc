@@ -206,6 +206,8 @@ class AxisSlider(ttk.Frame):
             throttle = float(self._joy_axis_bar["value"])
 
         if throttle != self._prev_throttle_set:
+            if abs(throttle) < 4:
+                throttle = 0
             aq.set(f"GENERAL_ENG_THROTTLE_LEVER_POSITION:{index}", throttle)
             self._prev_throttle_set = throttle
 
@@ -284,7 +286,7 @@ class Window:
             print("Please connect a joystick.")
             sys.exit()
         else:
-            joy0 = pygame.joystick.Joystick(0)
+            joy0 = pygame.joystick.Joystick(1)
             joy0.init()
 
         self.load_settings()
